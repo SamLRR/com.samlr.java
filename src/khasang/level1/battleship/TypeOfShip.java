@@ -1,4 +1,4 @@
-package battleship;
+package khasang.level1.battleship;
 
 public class TypeOfShip {
     public enum TypeShip {

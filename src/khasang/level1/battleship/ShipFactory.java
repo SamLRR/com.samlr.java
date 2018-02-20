@@ -1,4 +1,4 @@
-package battleship;
+package khasang.level1.battleship;
 
 import java.util.Random;
 

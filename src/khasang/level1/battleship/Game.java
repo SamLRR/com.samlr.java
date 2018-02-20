@@ -1,4 +1,4 @@
-package battleship;
+package khasang.level1.battleship;
 
 public class Game {
     Field field;
@@ -8,7 +8,7 @@ public class Game {
         field = new Field();
         shipFactory = new ShipFactory();
         field.initField();
-//        field.setShip(shipFactory);
+        field.setShip(shipFactory);
         field.showCell();
 
     }

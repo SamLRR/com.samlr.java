@@ -1,4 +1,4 @@
-package battleship;
+package khasang.level1.battleship;
 
 public class Field {
 
@@ -54,7 +54,7 @@ public class Field {
         ship=shipFactory.makeShip();
 
         for (int i = 0; i < 10; i++) {
-//            cells[ship.][index + j] = 'O';
+            cells[ship.][index + j] = 'O';
 
         }
     }
