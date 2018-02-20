@@ -15,7 +15,7 @@ public class ShipFactory {
     private static final int SIZE_TYPE_OF_SHIP = TypeOfShip.TypeShip.values().length;
 
 
-    Ship[] makeShip() {
+     void makeShip() {
         int i = 0;
         Ship[] ship = new Ship[10];
         for (TypeOfShip.TypeShip typeShip : TypeOfShip.TypeShip.values()) {
@@ -25,7 +25,7 @@ public class ShipFactory {
             } while (i < 10);
             System.out.println(SIZE_TYPE_OF_SHIP);
         }
-        return ship;
+
     }
 
   /*  void setShip(Cel){
