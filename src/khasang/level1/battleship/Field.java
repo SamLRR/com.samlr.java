@@ -11,7 +11,13 @@ public class Field {
     }
 
     void showCell() {
+        System.out.println("   A  B  C  D  E  F  G  H  I  J");
         for (int i = 0; i < cells.length; i++) {
+            if (i == 9) {
+                System.out.print(i + 1 + " ");
+            } else {
+                System.out.print(i + 1 + "  ");
+            }
             for (int j = 0; j < cells.length; j++) {
                 System.out.print(cells[i][j] + "  ");
             }
@@ -48,14 +54,14 @@ public class Field {
         return point == 3;
     }
 
-    void setShip() {
-        Ship[] ship = null;
-        ShipFactory shipFactory = new ShipFactory();
-        ship=shipFactory.makeShip();
-
+    void setShip(ShipFactory shipFactory) {
         for (int i = 0; i < 10; i++) {
-            cells[ship.][index + j] = 'O';
-
+            int x = shipFactory.getShips()[i].getX();
+            int y = shipFactory.getShips()[i].getY();
+            int lenghtOfShip = shipFactory.getShips()[i].getLenghtOfShip();
+            for (int j = 0; j < lenghtOfShip; j++) {
+                cells[x][y + j] = 'O';
+            }
         }
     }
 }
