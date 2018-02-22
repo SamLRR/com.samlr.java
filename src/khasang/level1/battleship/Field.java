@@ -1,12 +1,16 @@
 package khasang.level1.battleship;
 
 public class Field {
+
     private static final int FIELDSIZE = 10;
+
+
     private char[][] cells = new char[FIELDSIZE][FIELDSIZE];
     private static int hitting;
+    private Point point;
 
-    public char[][] getCells() {
-        return cells;
+    public void setCells(char[][] cells) {
+        this.cells = cells;
     }
 
     public static int getFIELDSIZE() {
@@ -59,11 +63,11 @@ public class Field {
 
     void setShip(ShipFactory shipFactory) {
         for (int i = 0; i < 10; i++) {
-            int x = shipFactory.getShips().get(i).point.getX();
-            int y = shipFactory.getShips().get(i).point.getY();
-            int lenghtOfShip = shipFactory.getShips().get(i).getLenghtOfShip();
+            int x = shipFactory.getShips()[i].point.getX();
+            int y = shipFactory.getShips()[i].point.getY();
+            int lenghtOfShip = shipFactory.getShips()[i].getLenghtOfShip();
             for (int j = 0; j < lenghtOfShip; j++) {
-                cells[x][y] = (char) (lenghtOfShip + '0');
+                cells[x][y + j] = (char) (lenghtOfShip + '0');
             }
         }
     }
