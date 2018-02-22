@@ -1,10 +1,13 @@
 package khasang.level1.battleship;
 
 public class Field {
-
     private static final int FIELDSIZE = 10;
     private char[][] cells = new char[FIELDSIZE][FIELDSIZE];
-    private static int point;
+    private static int hitting;
+
+    public char[][] getCells() {
+        return cells;
+    }
 
     public static int getFIELDSIZE() {
         return FIELDSIZE;
@@ -39,7 +42,7 @@ public class Field {
                 if (cells[x - 1][y - 1] == 'O') {
                     cells[x - 1][y - 1] = 'X';
                     System.out.println("Корабль ранен");
-                    point++;
+                    hitting++;
                 } else {
                     if (!(cells[x - 1][y - 1] == '*' || cells[x - 1][y - 1] == 'X')) {
                         cells[x - 1][y - 1] = '*';
@@ -51,16 +54,16 @@ public class Field {
     }
 
     boolean isSink() {
-        return point == 3;
+        return hitting == 3;
     }
 
     void setShip(ShipFactory shipFactory) {
         for (int i = 0; i < 10; i++) {
-            int x = shipFactory.getShips()[i].getX();
-            int y = shipFactory.getShips()[i].getY();
-            int lenghtOfShip = shipFactory.getShips()[i].getLenghtOfShip();
+            int x = shipFactory.getShips().get(i).point.getX();
+            int y = shipFactory.getShips().get(i).point.getY();
+            int lenghtOfShip = shipFactory.getShips().get(i).getLenghtOfShip();
             for (int j = 0; j < lenghtOfShip; j++) {
-                cells[x][y + j] = 'O';
+                cells[x][y] = (char) (lenghtOfShip + '0');
             }
         }
     }

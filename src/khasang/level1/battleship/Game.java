@@ -5,6 +5,7 @@ public class Game {
     private ShipFactory shipFactory;
 
     public void init() {
+//        Player.greetingGamer();
         field = new Field();
         shipFactory = new ShipFactory();
         shipFactory.makeShip();
@@ -13,7 +14,8 @@ public class Game {
         field.showCell();
     }
 
+    //Заглушка, пока не реализовано
     public void start() {
-            return;
+        System.out.println("Победил игрок " + Player.nameOfGamer);
     }
 }

@@ -7,9 +7,10 @@ public class TypeOfShip {
         private final int sum;
 
         TypeShip(int sum) {
-            this.sum=sum;
+            this.sum = sum;
         }
-        public int getSum(){
+
+        public int getSum() {
             return sum;
         }
     }
