@@ -21,8 +21,9 @@ public abstract class Card {
     public void withDraw(int sum) {
         if (balance() >= sum) {
             bank.setBalanceOfCount(balance() - sum);
+            System.out.println("Снятие наличных: " + sum);
         } else {
-            System.out.println("Не достаточно средств");
+            System.out.println("Недостаточно средств");
         }
     }
 }

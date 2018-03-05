@@ -17,7 +17,7 @@ public class Atm {
 
     void ejectCard() {
         if (card == null) {
-            System.out.println("В банкомате нет карты");
+            showMessage();
         } else {
             card = null;
             System.out.println("Заберите Вашу карту");
@@ -27,14 +27,21 @@ public class Atm {
     public void withDraw(int sum) {
         if (insertCard()) {
             card.withDraw(sum);
-        }  else{
-            System.out.println("В банкомате нет карты");
+        } else {
+            showMessage();
         }
     }
 
+
     void showBalance() {
         if (insertCard()) {
-            System.out.println(card.balance());
+            System.out.println("На счете осталось: " + card.balance());
+        } else {
+            showMessage();
         }
+    }
+
+    public void showMessage() {
+        System.out.println("В банкомате нет карты");
     }
 }
