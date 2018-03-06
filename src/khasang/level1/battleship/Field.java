@@ -1,5 +1,7 @@
 package khasang.level1.battleship;
 
+import java.util.List;
+
 public class Field {
     private static final int FIELDSIZE = 10;
     private char[][] cells = new char[FIELDSIZE][FIELDSIZE];
@@ -53,14 +55,15 @@ public class Field {
         return hitting == 3;
     }
 
-    void setShip(ShipFactory shipFactory) {
+    void setShip(List<Ship> shipFactory) {
         for (int i = 0; i < 10; i++) {
-            int lenghtOfShip = shipFactory.getShips().get(i).getLenghtOfShip();
-            for (int j = 0; j < lenghtOfShip; j++) {
-                Point point = shipFactory.getShips().get(i).getCells().get(j);
+            Ship ship = shipFactory.get(i);
+            int lengthOfShip = ship.getLengthOfShip();
+            for (int j = 0; j < lengthOfShip; j++) {
+                Point point = ship.getCells().get(j);
                 int x = point.getX();
                 int y = point.getY();
-                cells[x][y] = (char) (lenghtOfShip + '0');
+                cells[x][y] = (char) (lengthOfShip + '0');
             }
         }
     }

@@ -1,5 +1,7 @@
 package khasang.level1.battleship;
 
+import java.util.List;
+
 public class Game {
     private Field field;
     private ShipFactory shipFactory;
@@ -7,10 +9,11 @@ public class Game {
     public void init() {
 //        Player.greetingGamer();
         field = new Field();
-        shipFactory = new ShipFactory();
-        shipFactory.makeShip();
+//        shipFactory = new ShipFactory();
+//        shipFactory.makeShip();
+        List<Ship> ships = ShipFactory.makeShips();
         field.initField();
-        field.setShip(shipFactory);
+        field.setShip(ships);
         field.showCell();
     }
 

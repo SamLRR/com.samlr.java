@@ -1,26 +1,27 @@
 package khasang.level1.battleship;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ShipFactory {
     /**
      * Количество типов кораблей
      */
-    private static final int SIZE_TYPE_OF_SHIP = TypeOfShip.TypeShip.values().length;
-    private ArrayList<Ship> ships = new ArrayList<Ship>();
-    private Point point;
-    private Random random;
+    private static final int SIZE_TYPE_OF_SHIP = TypeShip.values().length;
+    private static List<Ship> ships = new ArrayList<>();
+    private static Point point;
+    private static Random random;
 
-    public ArrayList<Ship> getShips() {
+    public static List<Ship> getShips() {
         return ships;
     }
 
-    void makeShip() {
+    static List<Ship> makeShips() {
         int fieldSize = Field.getFIELDSIZE();
         random = new Random();
         int i = 0;
-        for (TypeOfShip.TypeShip typeShip : TypeOfShip.TypeShip.values()) {
+        for (TypeShip typeShip : TypeShip.values()) {
             int lenghtOfShip = typeShip.getSum();
             Ship ship;
             for (int j = lenghtOfShip; j <= SIZE_TYPE_OF_SHIP; j++) {
@@ -36,10 +37,15 @@ public class ShipFactory {
                 i++;
             }
         }
+        return ships;
     }
 
-    boolean isOverlayOrTouch(Ship ctrlShip) {
-        for (Ship ship : ships) if (ship.isOverlayOrTouch(ctrlShip)) return true;
+    static boolean isOverlayOrTouch(Ship ctrlShip) {
+        for (Ship ship : ships) {
+            if (ship.isOverlayOrTouch(ctrlShip)) {
+                return true;
+            }
+        }
         return false;
     }
 }

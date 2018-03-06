@@ -1,6 +1,5 @@
 package khasang.level1.battleship;
 
-public class TypeOfShip {
     public enum TypeShip {
         BATTLESHIP(4), CRUISER(3), DESTROYER(2), SUBMARINE(1);
 
@@ -14,4 +13,3 @@ public class TypeOfShip {
             return sum;
         }
     }
-}
