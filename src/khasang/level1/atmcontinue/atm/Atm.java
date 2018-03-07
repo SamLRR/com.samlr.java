@@ -1,4 +1,6 @@
-package khasang.level1.atmcontinue;
+package khasang.level1.atmcontinue.atm;
+
+import khasang.level1.atmcontinue.card.Card;
 
 public class Atm {
     private Card card;
@@ -35,7 +37,7 @@ public class Atm {
         }
     }
 
-    void showBalance() {
+    public void showBalance() {
         if (insertCard()) {
             System.out.println("На счете осталось: " + card.getCurrentAccount().getAccountBalance());
         } else {

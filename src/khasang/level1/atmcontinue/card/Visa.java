@@ -1,4 +1,6 @@
-package khasang.level1.atmcontinue;
+package khasang.level1.atmcontinue.card;
+
+import khasang.level1.atmcontinue.bank.Bank;
 
 import java.util.Date;
 
