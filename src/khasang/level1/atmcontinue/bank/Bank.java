@@ -8,6 +8,10 @@ public class Bank {
     private BankAccount bankAccount;
     private static Map<BankAccount, Client> clientMap = new HashMap<>();
 
+
+    public Bank() { // обязательно создавать пустой конструктор
+    }
+
     public Bank(BankAccount bankAccount, Client client) {
         this.bankAccount = bankAccount;
         this.client = client;
@@ -52,17 +56,18 @@ public class Bank {
     }
 
     /**
-     *Просмотр информации по одному клиенту и всем его счетам
+     * Просмотр информации по одному клиенту и всем его счетам
      */
-    public static BigInteger getClientInfo(Client client) {
-        BigInteger balance = BigInteger.valueOf(0);
+
+    public void getClientInfo(Client client) {
+        BigInteger balance;
         for (Map.Entry<BankAccount, Client> entry : clientMap.entrySet()) {
             if (client.equals(entry.getValue())) {
                 balance = entry.getKey().getAccountBalance();
-                System.out.println(entry.getValue() + " счёт № " + entry.getKey() + ". Остаток  " + balance);
+                //System.out.println(entry.getValue() + " счёт № " + entry.getKey() + ". Остаток  " + balance);
+                System.out.println(entry.getValue().toString() + " счёт № " + entry.getKey().getNumber() + ". Остаток  " + balance); // исправлено
             }
         }
-        return balance;
     }
 
     /**
@@ -70,6 +75,6 @@ public class Bank {
      */
     public static void getAccountInfo(BankAccount account11) {
 
-        System.out.println("Счет № "+account11.getNumber() + ". Владелец: " + " Остаток на счете: "+account11.getAccountBalance());
+        System.out.println("Счет № " + account11.getNumber() + ". Владелец: " + " Остаток на счете: " + account11.getAccountBalance());
     }
 }

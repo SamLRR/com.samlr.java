@@ -1,5 +1,6 @@
 package khasang.level1.atmcontinue.card;
 
+
 import khasang.level1.atmcontinue.bank.Bank;
 import khasang.level1.atmcontinue.bank.BankAccount;
 
@@ -7,17 +8,19 @@ import java.math.BigInteger;
 import java.util.Date;
 
 public abstract class Card {
-    private String nameOfCard;
-    private Date dateOfExpiry;
+    private String nameCard;
+    private Date dateExpiryCard;
     private Bank bank;
     private BankAccount currentAccount;
-    private String nameOfOwner;
 
-    protected Card(String nameOfCard, Date dateOfExpiry, Bank bank) {
-        this.nameOfCard = nameOfCard;
-        this.dateOfExpiry = dateOfExpiry;
+    public Card() {
+    }
+
+    public Card(String nameCard, Date dateExpiryCard, Bank bank) {
+        this.nameCard = nameCard;
+        this.dateExpiryCard = dateExpiryCard;
         this.bank = bank;
-        currentAccount=bank.getBankAccount();
+        this.currentAccount = bank.getBankAccount();
     }
 
     public BankAccount getCurrentAccount() {
@@ -28,9 +31,10 @@ public abstract class Card {
         return bank.getBalanceOfCount();
     }
 
-    public void withDraw(int sum) {
-        if (BigInteger.valueOf(sum).compareTo(balance())<0/*balance() >= sum*/) {
-            bank.setBalanceOfCount(balance().subtract(BigInteger.valueOf(sum)));
+    public void withDraw(BigInteger sum) {
+
+        if (sum.compareTo(balance()) < 0) {
+            bank.setBalanceOfCount(balance().subtract(sum));
             System.out.println("Снятие наличных: " + sum);
         } else {
             System.out.println("Недостаточно средств");

@@ -1,18 +1,32 @@
 package khasang.level1.atmcontinue.atm;
 
+
 import khasang.level1.atmcontinue.card.Card;
+
+import java.math.BigInteger;
 
 public class Atm {
     private Card card;
 
-    public void setCard(Card card) {
-        if(insertCard()){
-            System.out.println("В банкомате уже есть карта, попробуйте попозже");
-        } else
+    public Atm(Card card) { // необходимо всегда делать такой конструктор
         this.card = card;
     }
 
-    boolean insertCard() {
+    public Atm() {  // необходимо всегда делать такой пустой конструктор
+    }
+
+    public Card getCard() { // геттер тоже нужно всегда делать
+        return card;
+    }
+
+    public void setCard(Card card) {
+        if (insertCard()) {
+            System.out.println("В банкомате уже есть карта, попробуйте попозже");
+        } else
+            this.card = card;
+    }
+
+    private boolean insertCard() { // если не оговорено иное, то делайте доступ private
         if (card == null) {
             return false;
         } else {
@@ -30,8 +44,9 @@ public class Atm {
     }
 
     public void withDraw(int sum) {
+        BigInteger biSum = BigInteger.valueOf(sum);// сделаем тогда тип данных BigInteger раз везде используем
         if (insertCard()) {
-            card.withDraw(sum);
+            card.withDraw(biSum);
         } else {
             showMessage();
         }
@@ -45,7 +60,7 @@ public class Atm {
         }
     }
 
-    public void showMessage() {
+    private void showMessage() { // если не оговорено иное, то делайте доступ private доступ только внутри класса
         System.out.println("В банкомате нет карты");
     }
 }
